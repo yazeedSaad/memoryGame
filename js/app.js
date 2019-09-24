@@ -40,22 +40,20 @@ function removeListener(){
 }
 
 function showCard(e) {
-    removeListener()
     if (e.target.className === "card") {
         e.target.classList.add("show", "open");
         openCards.push(e.target);
 
     }if (openCards.length === 2){
         checkCards()
+        deck.classList.add("noClick");
     }else {
-        addListener();
     }
  }
 
  function checkCards(){
     moves++;
     movesCounter.innerHTML = moves;
-    removeListener()
     openCards[1].classList.add("show");
     if(openCards[0].innerHTML === openCards[1].innerHTML) {
         setTimeout(cardsMatch, 1000);
@@ -72,6 +70,8 @@ function notMatch() {
         i.classList.remove("show")
     }
     openCards = [];
+    const decka = document.querySelector(".deck");
+    decka.classList.remove("noClick");
 }
 
 
@@ -84,7 +84,8 @@ function cardsMatch(){
     };
     matchedCards++
     openCards = [];
-    addListener()
+    const decka = document.querySelector(".deck");
+    decka.classList.remove("noClick");
 }
 
 function restartGmae(){
@@ -99,7 +100,6 @@ function restartGmae(){
 }
 
 function restartListnere(){
-
     const restart = document.querySelector(".score-panel").querySelector(".restart");
     restart.addEventListener("click", restartGmae)
 }
