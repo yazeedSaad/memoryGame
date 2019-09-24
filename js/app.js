@@ -8,7 +8,7 @@ const allCards = document.getElementById('deck').getElementsByClassName("card");
  
  const allCardsAr = Array.from(allCards);
  let openCards = [];
-//   shuffle the list of cards using the provided "shuffle" method below
+//  shuffle the list of cards using the provided "shuffle" method below
 const shuffledCards = shuffle(allCardsAr);
 
 /*
