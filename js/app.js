@@ -2,7 +2,6 @@ const deck = document.querySelector('.deck');
 /*
  * Create a list that holds all of your cards
  */
-
 const allCards = document.getElementById('deck').getElementsByClassName("card");
  // Display the cards on the page
 
@@ -38,15 +37,17 @@ function shuffle(array) {
 
 function showCard(e) {
     
-    if (e.target.className = "card") {
+    if (e.target.className === "card") {
         e.target.classList.add("show", "open");
         openCards.push(e.target);
+
     }if (openCards.length === 2){
-        checkCards(e)
+        openCards[1].classList.add("show")
+        checkCards()
     }
  }
 
-function notMatch(e) {
+function notMatch() {
     const nomatch = deck.querySelectorAll(".open");
     for (const i of nomatch) {
         i.classList.remove('open');
@@ -54,17 +55,25 @@ function notMatch(e) {
     }
     openCards = [];
 }
-function checkCards(e){
+function checkCards(){
     removeListener()
+    openCards[1].classList.add("show");
     if(openCards[0].innerHTML === openCards[1].innerHTML) {
-        cardsMatch();
+        setTimeout(cardsMatch, 1000);
     }else if(openCards[0] != openCards[1].innerHTML) {
-        notMatch(e);
+        setTimeout(notMatch, 1000);
         addEvent()
     }
 }
-function cardsMatch(target){
-    target.classList.add("match");
+function cardsMatch(){
+    const matchedCards = deck.querySelectorAll(".open");
+    for (const i of matchedCards) {
+        i.classList.remove('open');
+        i.classList.remove('show');
+        i.classList.add("match")
+    };
+    openCards = [];
+    addEvent()
 }
 /*
  * set up the event listener for a card. If a card is clicked:
