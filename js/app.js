@@ -4,8 +4,9 @@ const deck = document.querySelector('.deck');
  */
 const allCards = document.getElementById('deck').getElementsByClassName("card");
  // Display the cards on the page
-
- 
+const movesCounter = document.querySelector(".score-panel").querySelector('.moves');
+let moves = 0;
+matchedCards = 0;
  const allCardsAr = Array.from(allCards);
  let openCards = [];
 //  shuffle the list of cards using the provided "shuffle" method below
@@ -42,7 +43,6 @@ function showCard(e) {
         openCards.push(e.target);
 
     }if (openCards.length === 2){
-        openCards[1].classList.add("show")
         checkCards()
     }
  }
@@ -56,6 +56,8 @@ function notMatch() {
     openCards = [];
 }
 function checkCards(){
+    moves++;
+    movesCounter.innerHTML = moves;
     removeListener()
     openCards[1].classList.add("show");
     if(openCards[0].innerHTML === openCards[1].innerHTML) {
@@ -66,8 +68,8 @@ function checkCards(){
     }
 }
 function cardsMatch(){
-    const matchedCards = deck.querySelectorAll(".open");
-    for (const i of matchedCards) {
+    const matched = deck.querySelectorAll(".open");
+    for (const i of matched) {
         i.classList.remove('open');
         i.classList.remove('show');
         i.classList.add("match")
