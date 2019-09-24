@@ -1,11 +1,14 @@
-const movesCounter = document.querySelector(".score-panel").querySelector('.moves');
+const movesCounter = document.querySelector(".score-panel").querySelector(".moves");
 let openCards = [];
 matchedCards = 0;
 let moves = 0;
 
 function newGame(){
-    const deck = document.querySelector('.deck');
-    const allCards = document.getElementById('deck').getElementsByClassName("card");
+    openCards = [];
+    matchedCards = 0;
+    moves = 0;
+    const deck = document.querySelector(".deck");
+    const allCards = document.getElementById("deck").getElementsByClassName("card");
     const allCardsAr = Array.from(allCards);
     const shuffledCards = shuffle(allCardsAr);
     deck.innerHTML = "";
@@ -65,8 +68,8 @@ function showCard(e) {
 function notMatch() {
     const nomatch = deck.querySelectorAll(".open");
     for (const i of nomatch) {
-        i.classList.remove('open');
-        i.classList.remove('show')
+        i.classList.remove("open");
+        i.classList.remove("show")
     }
     openCards = [];
 }
@@ -75,14 +78,30 @@ function notMatch() {
 function cardsMatch(){
     const matched = deck.querySelectorAll(".open");
     for (const i of matched) {
-        i.classList.remove('open');
-        i.classList.remove('show');
+        i.classList.remove("open");
+        i.classList.remove("show");
         i.classList.add("match")
     };
     matchedCards++
-    console.log(matchedCards);
     openCards = [];
     addListener()
 }
 
+function restartGmae(){
+    movesCounter.innerHTML = 0;
+    const opening = deck.querySelectorAll(".open, .match");
+    for (const i of opening) {
+        i.classList.remove("open");
+        i.classList.remove("show");
+        i.classList.remove("match");
+    }
+    newGame()
+}
+
+function restartListnere(){
+
+    const restart = document.querySelector(".score-panel").querySelector(".restart");
+    restart.addEventListener("click", restartGmae)
+}
 newGame()
+restartListnere()
