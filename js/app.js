@@ -61,7 +61,9 @@ function showCard(e) {
         setTimeout(notMatch, 1000);
         addListener()
     }
-}
+    if (moves === 10){removeStar1()}
+    if (moves === 16){removeStar2()}
+}   
 
 function notMatch() {
     const nomatch = deck.querySelectorAll(".open");
@@ -86,6 +88,16 @@ function cardsMatch(){
     openCards = [];
     const decka = document.querySelector(".deck");
     decka.classList.remove("noClick");
+}
+
+function removeStar1(){
+    const star1 = document.querySelector("#star1")
+    star1.style.display = "none";
+}
+
+function removeStar2(){
+    const star2 = document.querySelector("#star2")
+    star2.style.display = "none";
 }
 
 function restartGmae(){
