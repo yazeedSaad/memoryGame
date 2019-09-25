@@ -111,3 +111,28 @@ h1 {
     float: right;
     cursor: pointer;
 }
+
+#modal {
+    position: fixed;
+    z-index: 1;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    background-color: rgba(46, 61, 73, 0.5);
+}
+#modal-centent {
+    display: flex;
+    flex-direction: column;
+    background-color: #b8b4b4;
+    margin: 10% auto;
+    width: 50%;
+    padding: 20px;
+    border-radius: 10%;
+    justify-items: center;
+    align-items: center; 
+}
+
+#playAgain:hover {
+    color: #02ccba;
+    cursor: pointer;
+}

@@ -4,6 +4,8 @@ matchedCards = 0;
 let moves = 0;
 let seconds = 0;
 let minuts = 0;
+gameTimer = "off";
+
 
 function newGame(){
     openCards = [];
@@ -20,7 +22,10 @@ function newGame(){
         deck.appendChild(card);
     }
     addListener()
-    timer()
+    if (gameTimer ==="off"){
+        gameTimer = "on"
+        timer()
+    }
 }
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
@@ -116,6 +121,8 @@ function restartGmae(){
         i.classList.remove("show");
         i.classList.remove("match");
     }
+    seconds = 0;
+    minuts = 0;
     newGame()
 }
 
@@ -125,9 +132,8 @@ function restartListnere(){
 }
 
 function timer(){
-    
-    timerOn = setInterval(addTimer, 1000);
-        
+    if (gameTimer === "on"){
+        timerOn = setInterval(addTimer, 1000);}      
     function addTimer(){
     seconds++;
     if (seconds === 60) {
