@@ -2,11 +2,15 @@ const movesCounter = document.querySelector(".score-panel").querySelector(".move
 let openCards = [];
 matchedCards = 0;
 let moves = 0;
+let seconds = 0;
+let minuts = 0;
 
 function newGame(){
     openCards = [];
     matchedCards = 0;
     moves = 0;
+    document.querySelector("#star1").style.display = "inline-block";
+    document.querySelector("#star2").style.display = "inline-block";
     const deck = document.querySelector(".deck");
     const allCards = document.getElementById("deck").getElementsByClassName("card");
     const allCardsAr = Array.from(allCards);
@@ -16,6 +20,7 @@ function newGame(){
         deck.appendChild(card);
     }
     addListener()
+    timer()
 }
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
@@ -88,6 +93,9 @@ function cardsMatch(){
     openCards = [];
     const decka = document.querySelector(".deck");
     decka.classList.remove("noClick");
+    if (matchedCards === 8) {
+        stopTimer();
+    }
 }
 
 function removeStar1(){
@@ -114,6 +122,30 @@ function restartGmae(){
 function restartListnere(){
     const restart = document.querySelector(".score-panel").querySelector(".restart");
     restart.addEventListener("click", restartGmae)
+}
+
+function timer(){
+    
+    timerOn = setInterval(addTimer, 1000);
+        
+    function addTimer(){
+    seconds++;
+    if (seconds === 60) {
+        seconds = 0;
+        minuts++
+    }
+    if (seconds < 10) {
+        console.log(minuts+":0"+seconds)
+    }else {
+        console.log(minuts+":"+seconds)
+    }
+
+}
+}
+
+function stopTimer(){
+    clearInterval(timerOn);
+    console.log("your time is: "+minuts+":"+seconds)
 }
 newGame()
 restartListnere()
