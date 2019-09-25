@@ -100,6 +100,7 @@ function cardsMatch(){
     decka.classList.remove("noClick");
     if (matchedCards === 8) {
         stopTimer();
+        openModal();
     }
 }
 
@@ -152,6 +153,22 @@ function timer(){
 function stopTimer(){
     clearInterval(timerOn);
     console.log("your time is: "+minuts+":"+seconds)
+}
+
+function openModal(){
+    const modal = document.getElementById("modal")
+    const finalMoves = document.getElementById("movesOut")
+    const finalTime = document.getElementById("timeOut")
+    const finalStars = document.getElementById("playerStars")
+    const playAgainBtn = document.getElementById("playAgain")
+    modal.style.display = 'block';
+    finalMoves.innerHTML = moves;
+    finalTime.innerHTML = minuts+":"+seconds
+    gameTimer = "off";
+    playAgainBtn.addEventListener("click", function(){
+        modal.style.display = 'none';
+        restartGmae();
+    })
 }
 newGame()
 restartListnere()
