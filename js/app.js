@@ -164,11 +164,13 @@ function openModal(){
     modal.style.display = 'block';
     finalMoves.innerHTML = moves;
     finalTime.innerHTML = minuts+":"+seconds
+    finalStars.innerHTML = document.querySelector("#stars");
     gameTimer = "off";
     playAgainBtn.addEventListener("click", function(){
         modal.style.display = 'none';
         restartGmae();
     })
+    console.log(document.getElementById("stars"))
 }
 newGame()
 restartListnere()
