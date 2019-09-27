@@ -12,13 +12,14 @@
     <div id="modal">
         <div id="modal-centent">
             <h1>You won !!</h1>
-            <h3>with toal moves:</h3>
+            <h3>with total moves</h3>
             <span id="movesOut"></span>
-            <h3>in:</h3>
+            <h3>Your time</h3>
             <span id="timeOut"></span>
-            <h3>Your score:</h3>
+            <h3>Your score (3 Stars max)</h3>
             <span id="playerStars"></span>
-            <span id="playAgain">Play again</span>
+            <span class="playAgain" id="playAgain">Play again</span>
+            <span class="playAgain" id="end-game">Cancle</span>
         </div>
     </div>
     <div class="container">
@@ -27,17 +28,21 @@
         </header>
 
         <section class="score-panel">
-        	<ul class="stars" id="stars">
-        		<li id="star1"><i class="fa fa-star"></i></li>
-        		<li id="star2"><i class="fa fa-star"></i></li>
-        		<li><i class="fa fa-star"></i></li>
-        	</ul>
-
+            <div id="stars-container">
+                <ul class="stars" id="stars">
+                    <li id="star1"><i class="fa fa-star"></i></li>
+                    <li id="star2"><i class="fa fa-star"></i></li>
+                    <li><i class="fa fa-star"></i></li>
+                </ul>
+            </div>
         	<span class="moves">0</span> Moves
 
             <div class="restart">
         		<i class="fa fa-repeat"></i>
-        	</div>
+            </div>
+            <div class="timer">
+
+            </div>
         </section>
 
         <ul class="deck" id="deck">
